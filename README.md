@@ -44,7 +44,7 @@ This project blends the rich tradition of Moroccan cuisine with modern AI techno
 - **Curated Recipe Database:** A backup database of Moroccan recipes in case API access is unavailable.
 - **Knowledge Base:** Includes common ingredient substitutions (e.g., quinoa for couscous, coconut oil for butter) to enhance recipe modifications.
 
-## Installation
+<!-- ## Installation
 
 ### Prerequisites
 
@@ -81,7 +81,7 @@ This project blends the rich tradition of Moroccan cuisine with modern AI techno
    ```bash
    python app.py
    ```
-
+-->
 ## Usage
 
 After running the application, interact with the chatbot via the command line or integrated web interface. Here are some example queries you can try:
