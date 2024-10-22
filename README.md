@@ -126,7 +126,7 @@ The chatbot is evaluated based on the following metrics:
 4. **Mobile App Integration:**
    - Develop a mobile-friendly version of the chatbot for easy access on smartphones.
 
-## Contributing
+<!-- ## Contributing
 
 We welcome contributions to improve the project! To contribute:
 
@@ -144,9 +144,7 @@ We welcome contributions to improve the project! To contribute:
    git push origin feature/your-feature
    ```
 5. Create a Pull Request.
-
-Please ensure that your contributions are aligned with the overall goal of enhancing Moroccan cuisine and dietary adaptability.
-
+-->
 ## License
 
 This project is licensed under the ... License. See the [LICENSE](LICENSE) file for more details.
