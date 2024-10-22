@@ -1,4 +1,3 @@
-```markdown
 # MoroccanCulinAIry: Smart Moroccan Cuisine Chatbot with Real-Time RAG and Dietary Adaptability
 
 ## Table of Contents
