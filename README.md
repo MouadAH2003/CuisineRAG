@@ -1,4 +1,4 @@
-# MoroccanCulinAIry: Smart Moroccan Cuisine Chatbot with Real-Time RAG and Dietary Adaptability
+# CuisineRAG: Smart Moroccan Cuisine Chatbot with Real-Time RAG and Dietary Adaptability
 
 ## Table of Contents
 - [Project Overview](#project-overview)
