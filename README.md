@@ -14,7 +14,7 @@
 
 ## Project Overview
 
-**MoroccanCulinAIry** is an AI-driven chatbot designed to offer personalized Moroccan cuisine recipes. It dynamically retrieves recipes from real-time sources using the Brave Search API or from a curated database of authentic Moroccan dishes. Powered by **Llama 3.1** and **Retrieval-Augmented Generation (RAG)**, the chatbot adapts these recipes based on user dietary preferences, including vegan, gluten-free, low-fat, and other health-related queries.
+**CuisineRAG** is an AI-driven chatbot designed to offer personalized Moroccan cuisine recipes. It dynamically retrieves recipes from real-time sources using the Brave Search API or from a curated database of authentic Moroccan dishes. Powered by **Llama 3.1** and **Retrieval-Augmented Generation (RAG)**, the chatbot adapts these recipes based on user dietary preferences, including vegan, gluten-free, low-fat, and other health-related queries.
 
 This project blends the rich tradition of Moroccan cuisine with modern AI technology to create a tool that serves both food enthusiasts and those with specific dietary needs. 
 
