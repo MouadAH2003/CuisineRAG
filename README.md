@@ -1,3 +1,8 @@
+<img src="assets/cuisinerag_logo.png" alt="Project Logo" width="300" />
+
+
+
+
 # CuisineRAG: Smart Moroccan Cuisine Chatbot with Real-Time RAG and Dietary Adaptability
 
 ## Table of Contents
