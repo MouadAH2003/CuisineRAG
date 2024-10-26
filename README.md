@@ -7,6 +7,14 @@
 
 > An intelligent Moroccan cuisine assistant powered by Retrieval-Augmented Generation (RAG) and Llama 3.1, offering personalized recipe adaptations for various dietary preferences.
 
+
+> [!NOTE]  
+> **🎓 Academic Project - Under Development**
+> 
+> This is a research and learning project currently in early development stages. Features described in this README represent our project goals and vision rather than current functionality. We expect to continue development throughout 2024.
+>
+> _Last Updated: October 2024_
+
 ## 🌟 Project Overview
 
 CuisineRAG revolutionizes the way people explore and adapt Moroccan cuisine by combining cutting-edge AI technology with traditional culinary expertise. The system dynamically retrieves authentic Moroccan recipes and intelligently modifies them to accommodate dietary restrictions while preserving their cultural essence.
