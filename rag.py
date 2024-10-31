@@ -82,12 +82,3 @@ class Embedder:
             embeddings.append(embedding)
         return embeddings
 
-# Exemple d'utilisation
-directory_path = 'recipes/'
-recipe_extractor = RecipeExtractor(directory_path)
-recipes = recipe_extractor.extract_recipes()
-recipe_extractor.display_first_elements(5)
-
-embedder = Embedder()
-embedded_recipes = embedder.embed_chunks(recipes)
-print(embedded_recipes[:5])
