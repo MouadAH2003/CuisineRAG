@@ -9,7 +9,6 @@ from llama_index.core import SimpleDirectoryReader, VectorStoreIndex
 from llama_index.vector_stores.qdrant import QdrantVectorStore
 from llama_index.core.storage.storage_context import StorageContext
 
-
 from llama_index.core import Settings
 
 import warnings
@@ -19,6 +18,7 @@ class Assistant:
     def __init__(self):
         self._qdrant_url = "http://localhost:6333"
         self._client = QdrantClient(url=self._qdrant_url)
+        self._collection_name="kitchen_db"
 
         # Load Sentence Transformer for embeddings
         self._embed_model = LangchainEmbedding(
@@ -38,6 +38,16 @@ class Assistant:
 
     def _create_kb(self):
         try:
+            if self._client.collection_exists(collection_name=f"{self._collection_name}"):
+                print("Knowledge base already exists. Loading existing index.")
+                vector_store = QdrantVectorStore(
+                    client=self._client, collection_name="kitchen_db"
+                )
+                storage_context = StorageContext.from_defaults(vector_store=vector_store)
+                self._index = VectorStoreIndex.from_vector_store(vector_store=vector_store)
+                
+                return
+
             all_documents = []
 
             # Iterate through all .txt files in the "data" directory
@@ -68,6 +78,9 @@ class Assistant:
             print(f"Error while creating knowledge base: {e}")
 
     def _create_chat_engine(self):
+        if self._index is None:
+            raise ValueError("Knowledge base index is not initialized.")
+
         memory = ChatMemoryBuffer.from_defaults(token_limit=1500)
         self._chat_engine = self._index.as_chat_engine(
             chat_mode="context",
@@ -76,6 +89,9 @@ class Assistant:
         )
 
     def interact_with_llm(self, customer_query):
+        if self._chat_engine is None:
+            raise ValueError("Chat engine is not initialized.")
+
         response = self._chat_engine.chat(customer_query)
         return response.response
 
@@ -85,8 +101,11 @@ class Assistant:
             You are a Moroccan cuisine expert AI Assistant.
             Provide personalized recipe recommendations based on user preferences.
             Guide users step-by-step through the preparation process.
-            If you don’t know the answer, say so without guessing.
+            Only provide recipes that are part of our context and only the moroccan recipes.
+            If a recipe is not available , say you don't have information on that dish without guessing.
         """
+
+    
 
 # Example usage
 if __name__ == "__main__":
