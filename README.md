@@ -1,6 +1,5 @@
-# CuisineRAG 🍲
 <p align="center">
-  <img src="./cuisinerag_logo.png" width="250px" alt="CuisineRAG Logo"/>
+  <img src="./cuisinerag_logo.png" width="350px" alt="CuisineRAG Logo"/>
 </p>
 
 
