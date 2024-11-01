@@ -14,6 +14,8 @@ from llama_index.core import Settings
 import warnings
 warnings.filterwarnings("ignore")
 
+
+
 class Assistant:
     def __init__(self):
         self._qdrant_url = "http://localhost:6333"
