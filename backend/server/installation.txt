@@ -1,0 +1,1 @@
+pip install fastapi uvicorn pydantic sqlalchemy databases passlib python-jose aiosqlite python-multipart bcrypt websockets wsproto

@@ -1,0 +1,1 @@
+pip install qdrant-client langchain-community llama-index llama-index-vector-stores-qdrant llama-index-llms-groq llama-index-embeddings-langchain

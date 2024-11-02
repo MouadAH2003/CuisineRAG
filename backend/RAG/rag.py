@@ -16,7 +16,7 @@ warnings.filterwarnings("ignore")
 
 class Assistant:
     def __init__(self):
-        self._qdrant_url = "http://localhost:6333"
+        self._qdrant_url = os.getenv("QDRANT_URL","http://localhost:6333")
         self._client = QdrantClient(url=self._qdrant_url)
         self._collection_name="kitchen_db"
 
@@ -26,7 +26,9 @@ class Assistant:
         )
 
         # Initialize Groq LLM
-        self._llm = Groq(model="llama3-70b-8192", api_key="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")
+        self._groq_api_key=os.getenv("GROQ_API_KEY","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")
+        print("api",self._groq_api_key)
+        self._llm = Groq(model="llama3-70b-8192", api_key=self._groq_api_key)
 
         Settings.llm = self._llm
         Settings.embed_model = self._embed_model
@@ -34,7 +36,7 @@ class Assistant:
 
         # Create knowledge base and chat engine
         self._create_kb()
-        self._create_chat_engine()
+        #self._create_chat_engine()
 
     def _create_kb(self):
         try:
@@ -110,6 +112,7 @@ class Assistant:
 # Example usage
 if __name__ == "__main__":
     assistant = Assistant()
+    assistant._create_chat_engine()
     print(assistant.interact_with_llm("hello"))
 
     while True:
