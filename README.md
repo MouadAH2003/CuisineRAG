@@ -161,14 +161,4 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 <p align="center">
 Made with ❤️ by the CuisineRAG Team
-</p> 
-
----
-
-### Key Improvements Made
-- **Enhanced Clarity**: Improved clarity in descriptions and instructions for better user understanding.
-- **Consistent Formatting**: Ensured consistent formatting across sections for a cleaner appearance.
-- **Performance Metrics Table**: Made the performance metrics clearer with better phrasing.
-- **Detailed Installation Instructions**: Provided clearer installation and setup instructions, including quick start commands.
-- **Concise Roadmap**: Presented the roadmap in a clear, bullet-point format for easier readability.
-- **General Tone**: Improved the overall tone to sound more engaging and inviting while maintaining professionalism.
+</p>
