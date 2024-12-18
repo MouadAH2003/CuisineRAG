@@ -1,0 +1,286 @@
+.message {
+    margin: 1rem 0;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    max-width: 85%;
+}
+
+.message.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* User messages */
+.message.user {
+    margin-left: auto;
+}
+
+.message.bot {
+    margin-right: auto;
+    color: #fff;
+}
+
+.message-bubble {
+    padding: 1rem;
+    border-radius: 1rem;
+    position: relative;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+/* Message styling based on sender */
+.user .message-bubble {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    color: white;
+    border-top-right-radius: 0.25rem;
+}
+
+.bot .message-bubble {
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-top-left-radius: 0.25rem;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .bot .message-bubble {
+        background: #2d3436;
+        border-color: #404040;
+    }
+}
+
+/* Message content */
+.message-content {
+    position: relative;
+    line-height: 1.5;
+}
+
+.message-content p {
+    margin: 0;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+/* Message status indicators */
+.message-status {
+    position: absolute;
+    bottom: -1.95rem;
+    right: 0.0001rem;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.message-status.sending {
+    color: #95a5a6;
+}
+
+.message-status.sent {
+    color: #2ecc71;
+}
+
+.message-status.failed {
+    color: #e74c3c;
+}
+
+.retry-button {
+    background: none;
+    border: none;
+    color: #e74c3c;
+    cursor: pointer;
+    padding: 0.25rem;
+    transition: transform 0.2s ease;
+}
+
+.retry-button:hover {
+    transform: scale(1.1);
+}
+
+/* Citations styling */
+.citations-container {
+    margin-top: 1rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.citations-toggle {
+    width: 100%;
+    padding: 0.75rem;
+    background: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #666;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.citations-toggle:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.citations-list {
+    padding: 0.75rem;
+    background-color: rgba(0, 0, 0, 0.02);
+    border-radius: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.citation-item {
+    background: white;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-bottom: 0.75rem;
+    border-left: 3px solid #3498db;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.citation-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    color: #2c3e50;
+    font-weight: 500;
+}
+
+.citation-content blockquote {
+    margin: 0.5rem 0;
+    padding-left: 1rem;
+    border-left: 2px solid #e9ecef;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.citation-metadata {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+    color: #95a5a6;
+}
+
+.citation-metadata span {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+/* Message metadata */
+.message-metadata {
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-size: 0.8rem;
+}
+
+.metadata-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #666;
+}
+
+/* Expand/Collapse button */
+.expand-button {
+    background: none;
+    border: none;
+    color: #3498db;
+    padding: 0.25rem 0;
+    margin-top: 0.5rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.expand-button:hover {
+    text-decoration: underline;
+}
+
+/* Loading animation */
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.fa-circle-notch {
+    animation: spin 1s linear infinite;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .message {
+        max-width: 90%;
+    }
+
+    .message-bubble {
+        padding: 0.75rem;
+    }
+
+    .citation-item {
+        padding: 0.75rem;
+    }
+
+    .citation-metadata {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
+
+/* Hover effects */
+.message-bubble:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Accessibility focus styles */
+.expand-button:focus,
+.citations-toggle:focus,
+.retry-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.5);
+    border-radius: 0.25rem;
+}
+
+/* Message animations */
+@keyframes messageAppear {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.message.sending {
+    animation: messageAppear 0.3s ease forwards;
+}
+
+/* System messages */
+.message.system {
+    max-width: 100%;
+    margin: 1rem 0;
+    text-align: center;
+}
+
+.system .message-bubble {
+    background-color: #fff3cd;
+    border: 1px solid #ffeeba;
+    color: #856404;
+    display: inline-block;
+    padding: 0.5rem 1rem;
+}
+
+/* Error messages */
+.message.error .message-bubble {
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    color: #721c24;
+}
