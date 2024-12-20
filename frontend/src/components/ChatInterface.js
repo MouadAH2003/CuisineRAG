@@ -171,20 +171,22 @@ const ChatInterface = ({ currentConversationId }) => {
 
   return (
     <div className="chat-interface">
-      <div className="chat-header">
-        {error && (
-          <div className="error-banner" role="alert">
-            {error}
-            <button
-              className="close-button"
-              onClick={() => setError(null)}
-              aria-label="Close error message"
-            >
-              <i className="fas fa-times"></i>
-            </button>
+      {/* Error Banner */}
+      {error && (
+        <div className="error-banner" role="alert">
+          <div className="error-content">
+            <i className="fas fa-exclamation-triangle"></i>
+            <span>{error}</span>
           </div>
-        )}
-      </div>
+          <button
+            className="close-button"
+            onClick={() => setError(null)}
+            aria-label="Close error message"
+          >
+            <i className="fas fa-times"></i>
+          </button>
+        </div>
+      )}
 
       <div className="messages-container" role="log">
         {messages.length === 0 ? (

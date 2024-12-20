@@ -1,5 +1,5 @@
 .message {
-    margin: 1rem 0;
+    margin: 1.5rem 0;
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.3s ease, transform 0.3s ease;
@@ -14,15 +14,150 @@
 /* User messages */
 .message.user {
     margin-left: auto;
+    max-width: 85%;
 }
 
+.user .message-bubble {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    color: white;
+    border-top-right-radius: 0.25rem;
+    padding: 1.25rem;
+    border-radius: 1rem;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.user .message-bubble:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.user .message-content {
+    position: relative;
+    line-height: 1.6;
+    font-size: 1rem;
+    font-weight: 500;
+    color: white;
+}
+
+.user .message-content p {
+    margin: 0;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.user .message-content a {
+    color: #ecf0f1;
+    text-decoration: underline;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.user .message-content a:hover {
+    color: #ffffff;
+}
+
+.user .message-link {
+    color: #ecf0f1;
+    text-decoration: underline;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    transition: color 0.2s ease;
+}
+
+.user .message-link:hover {
+    color: #ffffff;
+}
+
+.user .message-link i {
+    font-size: 0.9rem;
+}
+
+/* Expand/Collapse button */
+.user .expand-button {
+    background: none;
+    border: none;
+    color: #ecf0f1;
+    padding: 0.25rem 0;
+    margin-top: 0.5rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    transition: color 0.2s ease;
+}
+
+.user .expand-button:hover {
+    color: #ffffff;
+}
+
+/* Message status indicators */
+.user .message-status {
+    position: absolute;
+    bottom: -1.95rem;
+    right: 0.0001rem;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.user .message-status.sending {
+    color: #ecf0f1;
+}
+
+.user .message-status.sent {
+    color: #2ecc71;
+}
+
+.user .message-status.failed {
+    color: #e74c3c;
+}
+
+.user .retry-button {
+    background: none;
+    border: none;
+    color: #e74c3c;
+    cursor: pointer;
+    padding: 0.25rem;
+    transition: transform 0.2s ease;
+}
+
+.user .retry-button:hover {
+    transform: scale(1.1);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .message.user {
+        max-width: 90%;
+    }
+
+    .user .message-bubble {
+        padding: 0.75rem;
+    }
+}
+
+/* Accessibility focus styles */
+.user .expand-button:focus,
+.user .retry-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5);
+    border-radius: 0.25rem;
+}
 .message.bot {
     margin-right: auto;
-    color: #fff;
+    color: #333;
 }
 
 .message-bubble {
-    padding: 1rem;
+    padding: 1.25rem;
     border-radius: 1rem;
     position: relative;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -47,19 +182,52 @@
     .bot .message-bubble {
         background: #2d3436;
         border-color: #404040;
+        color: #fff;
     }
 }
 
 /* Message content */
 .message-content {
     position: relative;
-    line-height: 1.5;
+    line-height: 1.6;
 }
 
 .message-content p {
     margin: 0;
     white-space: pre-wrap;
     word-break: break-word;
+}
+
+.message-content a {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.message-content a:hover {
+    text-decoration: underline;
+}
+
+.message-link {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    transition: color 0.2s ease;
+}
+
+.message-link:hover {
+    color: #2980b9;
+    text-decoration: underline;
+}
+
+.message-link i {
+    font-size: 0.9rem;
 }
 
 /* Message status indicators */
@@ -283,4 +451,31 @@
     background-color: #f8d7da;
     border-color: #f5c6cb;
     color: #721c24;
+}
+
+/* Copy button for bot messages */
+.copy-button-container {
+    position: absolute;
+    bottom: 0.5rem;
+    right: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.copy-button {
+    background: none;
+    border: none;
+    color: #666;
+    cursor: pointer;
+    padding: 0.25rem;
+    transition: color 0.2s ease;
+}
+
+.copy-button:hover {
+    color: #3498db;
+}
+
+.copy-button .fas.fa-check {
+    color: #2ecc71;
 }

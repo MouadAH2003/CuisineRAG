@@ -9,7 +9,6 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Check authentication status
     const token = localStorage.getItem('token');
     const storedUsername = localStorage.getItem('username');
     if (token && storedUsername) {
@@ -23,7 +22,7 @@ const Navbar = () => {
     localStorage.removeItem('username');
     setIsAuthenticated(false);
     setUsername('');
-    navigate('/'); // Redirect to the home page
+    navigate('/');
   };
 
   return (

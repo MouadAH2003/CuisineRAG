@@ -12,6 +12,7 @@ const Message = ({
   const [isExpanded, setIsExpanded] = useState(false);
   const [showCitations, setShowCitations] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const [isCopied, setIsCopied] = useState(false);
 
   useEffect(() => {
     // Trigger fade-in animation
@@ -128,6 +129,38 @@ const Message = ({
   const messageContent = typeof text === 'string' ? text : 'Invalid message';
   const shouldTruncate = messageContent.length > 300 && !isExpanded;
 
+  // Function to detect and render links
+  const renderLinks = (content) => {
+    const urlRegex = /https?:\/\/[^\s]+/g;
+    const parts = content.split(urlRegex);
+    const matches = content.match(urlRegex) || [];
+
+    return parts.map((part, index) => (
+      <React.Fragment key={index}>
+        {part}
+        {matches[index] && (
+          <a
+            href={matches[index]}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="message-link"
+            aria-label={`Open link: ${matches[index]}`}
+          >
+            <i className="fas fa-external-link-alt"></i> {matches[index]}
+          </a>
+        )}
+      </React.Fragment>
+    ));
+  };
+
+  // Copy to clipboard functionality
+  const handleCopy = () => {
+    navigator.clipboard.writeText(messageContent).then(() => {
+      setIsCopied(true);
+      setTimeout(() => setIsCopied(false), 2000); // Reset after 2 seconds
+    });
+  };
+
   return (
     <div 
       className={`message ${sender} ${isVisible ? 'visible' : ''} ${status}`}
@@ -137,7 +170,7 @@ const Message = ({
         <div className="message-content">
           {shouldTruncate ? (
             <>
-              <p>{messageContent.slice(0, 300)}...</p>
+              <p>{renderLinks(messageContent.slice(0, 300))}...</p>
               <button 
                 className="expand-button"
                 onClick={() => setIsExpanded(true)}
@@ -147,7 +180,12 @@ const Message = ({
               </button>
             </>
           ) : (
-            <p>{messageContent}</p>
+            <div>
+              {/* Enhanced content formatting */}
+              {messageContent.split('\n').map((line, index) => (
+                <p key={index}>{renderLinks(line)}</p>
+              ))}
+            </div>
           )}
           {isExpanded && (
             <button 
@@ -162,6 +200,22 @@ const Message = ({
         </div>
         {renderMetadata()}
         {renderCitations()}
+        {/* Copy button for bot messages */}
+        {sender === 'bot' && (
+          <div className="copy-button-container">
+            <button
+              className="copy-button"
+              onClick={handleCopy}
+              aria-label="Copy message to clipboard"
+            >
+              {isCopied ? (
+                <i className="fas fa-check"></i>
+              ) : (
+                <i className="fas fa-copy"></i>
+              )}
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
